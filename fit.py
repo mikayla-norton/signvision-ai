@@ -16,7 +16,7 @@ class MetricsCheckpoint(Callback):
             self.history.setdefault(k, []).append(v)
         np.save(self.savepath, self.history)
 
-def pretrainedNetwork(xtrain,ytrain,xtest,ytest,pretrained,pretrainedweights,classweight,numclasses,numepochs,optimizer):
+def pretrainedNetwork(xtrain,ytrain,pct,pretrained,pretrainedweights,classweight,numclasses,numepochs,optimizer):
     base_model = pretrained # Topless
     # Add top layer
     x = base_model.output
@@ -32,10 +32,10 @@ def pretrainedNetwork(xtrain,ytrain,xtest,ytest,pretrained,pretrainedweights,cla
     callbacks_list = [keras.callbacks.EarlyStopping(monitor='val_acc', patience=3, verbose=1)]
     model.summary()
     # Fit model
-    history = model.fit(xtrain,ytrain, epochs=numepochs, class_weight=classweight, validation_data=(xtest,ytest), verbose=1,callbacks = [MetricsCheckpoint('logs')])
+    history = model.fit(xtrain,ytrain, epochs=numepochs, class_weight=classweight, validation_split=pct, verbose=1,callbacks = [MetricsCheckpoint('logs')])
     return(history, model)
 
-def scaled1dNetwork(xtrain, ytrain, xtest, ytest, classweight, numclasses, numepochs, optimizer):
+def scaled1dNetwork(xtrain, ytrain, pct, classweight, numclasses, numepochs, optimizer):
     input_shape = (xtrain.shape[1],)  # xtrain after PCA reduction
     inputs = Input(shape=input_shape)
     x = Dense(512, activation='relu', kernel_regularizer=l2(0.01))(inputs)
@@ -52,6 +52,6 @@ def scaled1dNetwork(xtrain, ytrain, xtest, ytest, classweight, numclasses, numep
     model.summary()
     
     history = model.fit(xtrain, ytrain, epochs=numepochs, class_weight=classweight,
-                        validation_data=(xtest, ytest), verbose=1, callbacks=callbacks_list)
+                        validation_split=pct, verbose=1, callbacks=callbacks_list)
     
     return history, model
