@@ -1,3 +1,5 @@
 *.zip
-*.h5
-*.keras
+keras_pre-trained_models/*.h5
+keras_pre-trained_models/*.keras
+assets/models/*.keras
+assets/models/*.h5
