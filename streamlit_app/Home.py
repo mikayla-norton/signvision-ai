@@ -31,7 +31,7 @@ logos = [
     'sklearn.png','tqdm.png','pandas.png','seaborn.png','numpy.png','matplotlib.png'
 ]
 for c, logo in zip(cols, logos):
-    c.image(Image.open(f'assets/image-logos/{logo}'), width=40)
+    c.image(Image.open(f'streamlit_app/assets/image-logos/{logo}'), width=40)
 
 
 st.subheader("Empowering Communication")
