@@ -3,6 +3,8 @@ import numpy as np
 from PIL import Image
 import tensorflow as tf           # <— use tf.keras
 from tensorflow.keras.applications import VGG16
+from keras.layers      import Input, Flatten, Dense
+from keras.models      import Model
 
 def build_model(input_shape=(50,50,3), num_classes=30):
     # note: weights=None so we load *all* weights from your .h5 file
@@ -11,24 +13,13 @@ def build_model(input_shape=(50,50,3), num_classes=30):
         include_top=False,
         input_shape=input_shape
     )
-    x = tf.keras.layers.Flatten(name="flatten")(base.output)
-    outputs = tf.keras.layers.Dense(
-        num_classes,
-        activation="softmax",
-        name="dense"
-    )(x)
-    return tf.keras.Model(inputs=base.input, outputs=outputs, name="SignVision")
+    x = Flatten()(base.output)
+    out = Dense(num_classes, activation='softmax', name='dense')(x)
+    return Model(inputs=base.input, outputs=out)
 
-
-# Instantiate and load weights:
-IMAGE_SIZE = (50, 50, 3)       
-NUM_CLASSES = 30               
-model = build_model(IMAGE_SIZE, NUM_CLASSES)
-
-model.load_weights(
-    'streamlit_app/assets/models/ASL_DNN.weights.h5'
-)
-model.compile()
+model = build_model((50,50,3), 30)
+model.load_weights("streamlit_app/assets/models/ASL_DNN.weights.h5")
+model.compile() 
 
 st.title("Live Classification - SignVision AI")
 uploaded = st.file_uploader("Upload an image:", type=['png','jpg','jpeg'])
