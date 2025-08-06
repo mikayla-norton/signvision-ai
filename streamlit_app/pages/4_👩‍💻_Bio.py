@@ -30,7 +30,7 @@ col1.markdown("<p style='text-align: justify;'>Nice to 'e-meet' you! My name is 
 col1.write("")
 
 
-col2.image("assets/headshot.jpg")
+col2.image("streamlit_app/assets/headshot.jpg")
 
 # add comments about motivation here:
 # col2.markdown('<p style="text-align: justify;">My journey towards developing a CNN-based tumor classifier for MRI scans is deeply rooted in my personal battle with hydrocephalus, a brain disorder that has profoundly impacted my life. This experience has not only given me a unique insight into the challenges faced by individuals with neurological conditions but also ignited a burning passion to leverage the power of technology for medical advancements. Recognizing the critical role of early and accurate tumor detection in improving patient outcomes, I was inspired to embark on this project. </p>', unsafe_allow_html=True)
