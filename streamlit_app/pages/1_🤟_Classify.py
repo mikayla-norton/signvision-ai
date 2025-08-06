@@ -6,7 +6,7 @@ st.title("Live Classification - SignVision AI")
 uploaded = st.file_uploader("Upload an image:", type=['png','jpg','jpeg'])
 if uploaded:
     with st.spinner("Classifying…"):
-        model = tf.keras.models.load_model('assets/models/ASL_DNN_3D.h5', compile=False)
+        model = tf.keras.models.load_model('streamlit_app/assets/models/ASL_DNN_3D.h5', compile=False)
     # 1) resize to model input
     expected_h, expected_w = model.input_shape[1:3]
     img = Image.open(uploaded).convert('RGB').resize((expected_w, expected_h))
