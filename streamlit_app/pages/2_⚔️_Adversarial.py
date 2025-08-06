@@ -24,7 +24,7 @@ $$
 ''')
 
 
-st.image("assets/result_images/whitebox.png", caption="White-box Perturbations", use_column_width=True)
+st.image("streamlit_app/assets/result_images/whitebox.png", caption="White-box Perturbations", use_column_width=True)
 
 
 st.subheader("Attack Implementation & Results")
@@ -36,6 +36,6 @@ st.markdown("""
 """)
 
 st.write("These high misclassification rates highlight the need for adversarial defenses.")
-st.image("assets/result_images/advAttack.png", caption="Sample Adversarial Examples")
+st.image("streamlit_app/assets/result_images/advAttack.png", caption="Sample Adversarial Examples")
 
 
