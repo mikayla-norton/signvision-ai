@@ -25,9 +25,9 @@ st.title("SignVision AI")
 st.header("Bridging Worlds: Real-Time ASL Translation with Robust, Adversarially-Hardened Models")
 
 # → Logos bar
-cols = st.columns(11)
+cols = st.columns(13)
 logos = [
-    'python.png','keras.png','tf.png','opencv.png','streamlit.png',
+    'python.png','keras.png','tf.png', 'foolbox.png', 'eagerpy.png','opencv.png','streamlit.png',
     'sklearn.png','tqdm.png','pandas.png','seaborn.png','numpy.png','matplotlib.png'
 ]
 for c, logo in zip(cols, logos):
