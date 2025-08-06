@@ -20,10 +20,10 @@ col1, col2 = st.columns([6, 1])
 with col1:
 
     st.header("Data Distribution")
-    st.components.v1.html(open('distPlot.html','r').read(), height=400)
+    st.components.v1.html(open('results/distPlot.html','r').read(), height=400)
 
     st.header("Confusion Matrix")
-    cm = np.loadtxt('confusion_matrix.csv', delimiter=',')
+    cm = np.loadtxt('results/confusion_matrix.csv', delimiter=',')
     fig = viz.plot_confusion_matrix(
         cm,
         classes=list("ABCDEFGHIJKLMNOPQRSTUVWXYZ") + ['delete','nothing','space'],
@@ -48,4 +48,4 @@ with col1:
 
 with col2:
     st.header("Model Structure")
-    st.image(Image.open('assets/result_images/model.png'), caption="Model Architecture", use_column_width=True)
+    st.image(Image.open('streamlit_app/assets/result_images/model.png'), caption="Model Architecture", use_column_width=True)
