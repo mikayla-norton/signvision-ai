@@ -3,3 +3,14 @@ keras_pre-trained_models/*.h5
 keras_pre-trained_models/*.keras
 assets/models/*.keras
 assets/models/*.h5
+streamlit_app/assets/models/*.keras
+streamlit_app/assets/models/*.h5
+
+# Python
+__pycache__/
+*.pyc
+
+# macOS
+.DS_Store
+
+
