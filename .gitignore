@@ -16,3 +16,5 @@ __pycache__/
 .venv
 
 src/model_fix.py
+# Claude Code local config
+.claude/

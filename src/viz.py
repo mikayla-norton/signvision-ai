@@ -64,23 +64,23 @@ def plot_confusion_matrix(cm,
 
 
 def plot_learning_curve(history):
-    plt.figure(figsize=(8,8))
-    plt.subplot(1,2,1)
-    plt.plot(history.history['acc'])
-    plt.plot(history.history['val_acc'])
+    fig = plt.figure(figsize=(12, 5))
+    plt.subplot(1, 2, 1)
+    plt.plot(history.history['accuracy'])
+    plt.plot(history.history['val_accuracy'])
     plt.title('model accuracy')
     plt.ylabel('accuracy')
     plt.xlabel('epoch')
-    plt.legend(['train', 'test'], loc='upper left')
-    plt.savefig('accuracy_curve.png')
-    plt.subplot(1,2,2)
+    plt.legend(['train', 'validation'], loc='upper left')
+    plt.subplot(1, 2, 2)
     plt.plot(history.history['loss'])
     plt.plot(history.history['val_loss'])
     plt.title('model loss')
     plt.ylabel('loss')
     plt.xlabel('epoch')
-    plt.legend(['train', 'test'], loc='upper left')
-    plt.savefig('loss_curve.png')
+    plt.legend(['train', 'validation'], loc='upper left')
+    plt.tight_layout()
+    return fig
 
 
 def distPlot(y_train, labels):

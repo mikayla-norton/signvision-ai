@@ -29,7 +29,7 @@ def pretrainedNetwork(xtrain,ytrain,pct,pretrained,pretrainedweights,classweight
     model.compile(loss='categorical_crossentropy', 
                   optimizer=optimizer, 
                   metrics=['accuracy'])
-    callbacks_list = [keras.callbacks.EarlyStopping(monitor='val_acc', patience=3, verbose=1)]
+    callbacks_list = [keras.callbacks.EarlyStopping(monitor='val_accuracy', patience=3, verbose=1)]
     model.summary()
     # Fit model
     history = model.fit(xtrain,ytrain, epochs=numepochs, class_weight=classweight, validation_split=pct, verbose=1,callbacks = [MetricsCheckpoint('logs')])

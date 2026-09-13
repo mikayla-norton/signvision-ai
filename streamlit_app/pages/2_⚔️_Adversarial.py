@@ -1,6 +1,8 @@
 import streamlit as st
 from PIL import Image
 
+from config import RESULT_IMAGE_DIR
+
 st.set_page_config(
     page_title='Adversarial - SignVision AI',
     page_icon='⚔️',
@@ -24,18 +26,28 @@ $$
 ''')
 
 
-st.image("streamlit_app/assets/result_images/whitebox.png", caption="White-box Perturbations", use_column_width=True)
+st.image(
+    str(RESULT_IMAGE_DIR / "whitebox.png"),
+    caption="White-box Perturbations",
+    use_column_width=True,
+)
 
 
 st.subheader("Attack Implementation & Results")
 st.markdown("""
-- **Attack Method:** FGSM using Foolbox.
+- **Attack Method:** FGSM, implemented with Foolbox.
 - **Total Attacked Images:** 4,350 (87 batches of 50).
 - **Average Attack Success (Full Model):** 92.76%.
 - **Average Attack Success (Reduced Model):** 98.81%.
 """)
 
-st.write("These high misclassification rates highlight the need for adversarial defenses.")
-st.image("streamlit_app/assets/result_images/advAttack.png", caption="Sample Adversarial Examples")
+st.write(
+    "These high misclassification rates show how vulnerable the baseline model is, "
+    "and motivate the adversarial training covered on the Results page."
+)
+st.image(
+    str(RESULT_IMAGE_DIR / "advAttack.png"),
+    caption="Sample adversarial examples (precomputed from the experiments)",
+)
 
 
